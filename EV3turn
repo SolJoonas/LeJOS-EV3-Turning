@@ -1,24 +1,24 @@
-	UnregulatedMotor Rightmotor = new UnregulatedMotor(MotorPort.A);
-	UnregulatedMotor Leftmotor = new UnregulatedMotor(MotorPort.B);
+UnregulatedMotor Rightmotor = new UnregulatedMotor(MotorPort.A);
+UnregulatedMotor Leftmotor = new UnregulatedMotor(MotorPort.B);
   
-  /**
-  * In this case robot follows left edge of black line.
-  * When sensor was fully over white value was 0.18 and over black 0.02
-  */
+ /**
+ * In this case robot follows left edge of black line.
+ * When sensor was fully over white value was 0.18 and over black 0.02
+ */
 
-	float Max = 0.12f; //Value after which you want the robot to turn
-	float Min = 0.1f; //Value after which you want the robot to turn
-	int Speed = 95; //motor speed in percentages
-	float ReduceSpeed;
+float Max = 0.12f; //Value after which you want the robot to turn
+float Min = 0.1f; //Value after which you want the robot to turn
+int Speed = 95; //motor speed in percentages
+float ReduceSpeed;
 	
-	public void Left(float ColorValue) { // gets ColorValue form colorsensor
-		ReduceSpeed = ((Min - ColorValue) * 1000); // Value is multiplied by 1000 to get 0.001(which is about the accuracy of the sensor) to equal to 1% 
-		Leftmotor.setPower(Speed - Math.round(ReduceSpeed)); //math.round is used to change float to int
-		Rightmotor.setPower(Speed);
-	}
+public void Left(float ColorValue) { // gets ColorValue form colorsensor
+	ReduceSpeed = ((Min - ColorValue) * 1000); // Value is multiplied by 1000 to get 0.001(which is about the accuracy of the sensor) to equal to 1% 
+	Leftmotor.setPower(Speed - Math.round(ReduceSpeed)); //math.round is used to change float to int
+	Rightmotor.setPower(Speed);
+}
   
-  public void Left(float ColorValue) { // gets ColorValue form colorsensor
-		ReduceSpeed = ((ColorValue - Max) * 1000); // Value is multiplied by 1000 to get 0.001(which is about the accuracy of the sensor) to equal to 1% 
-		Rightmotor.setPower(Speed - Math.round(ReduceSpeed)); //math.round is used to change float to int
-		Leftmotor.setPower(Speed);
-	}
+ public void Left(float ColorValue) { // gets ColorValue form colorsensor
+	ReduceSpeed = ((ColorValue - Max) * 1000); // Value is multiplied by 1000 to get 0.001(which is about the accuracy of the sensor) to equal to 1% 
+	Rightmotor.setPower(Speed - Math.round(ReduceSpeed)); //math.round is used to change float to int
+	Leftmotor.setPower(Speed);
+}
